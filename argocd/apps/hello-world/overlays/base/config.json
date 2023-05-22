@@ -1,0 +1,11 @@
+{
+  "appName": "hello-world",
+  "userGivenName": "hello-world",
+  "destNamespace": "default",
+  "destServer": "https://kubernetes.default.svc",
+  "srcPath": "argocd/apps/hello-world/overlays/base",
+  "srcRepoURL": "https://github.com/woneill/k8s-homelab.git",
+  "srcTargetRevision": "",
+  "labels": null,
+  "annotations": null
+}
