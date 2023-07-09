@@ -1,0 +1,6 @@
+releases:
+  - name: metallb-pools
+    namespace: metallb-system
+    chart: .
+    secrets:
+      - secrets.yaml

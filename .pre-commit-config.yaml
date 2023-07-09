@@ -25,6 +25,7 @@ repos:
       - id: check-merge-conflict
       - id: check-vcs-permalinks
       - id: check-yaml
+        exclude: .*/templates/.*\.yaml
       - id: detect-aws-credentials
       - id: detect-private-key
       - id: end-of-file-fixer

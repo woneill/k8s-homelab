@@ -1,0 +1,9 @@
+---
+helmDefaults:
+  # verify: true
+  wait: true
+  waitForJobs: true
+
+helmfiles:
+  - path: system/*/helmfile.yaml
+  - path: apps/*/helmfile.yaml

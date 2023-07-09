@@ -1,0 +1,8 @@
+releases:
+  - name: cert-manager-issuers
+    namespace: cert-manager
+    chart: .
+    secrets:
+      - secrets.yaml
+    values:
+      - values.yaml

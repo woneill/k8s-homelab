@@ -1,0 +1,10 @@
+repositories:
+  - name: external-dns
+    url: https://kubernetes-sigs.github.io/external-dns/
+
+releases:
+  - name: external-dns
+    namespace: external-dns
+    chart: external-dns/external-dns
+    secrets:
+      - secrets.yaml
