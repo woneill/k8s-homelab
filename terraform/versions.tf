@@ -2,7 +2,7 @@ terraform {
   required_providers {
     ct = {
       source  = "poseidon/ct"
-      version = "0.13.0"
+      version = "0.12.0"
     }
     matchbox = {
       source  = "poseidon/matchbox"
@@ -13,5 +13,5 @@ terraform {
       version = "0.7.2"
     }
   }
-  required_version = "1.4.6"
+  required_version = "1.5.6"
 }

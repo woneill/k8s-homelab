@@ -5,8 +5,8 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.4.6 |
-| <a name="requirement_ct"></a> [ct](#requirement\_ct) | 0.13.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | 1.5.6 |
+| <a name="requirement_ct"></a> [ct](#requirement\_ct) | 0.12.0 |
 | <a name="requirement_matchbox"></a> [matchbox](#requirement\_matchbox) | 0.5.2 |
 | <a name="requirement_sops"></a> [sops](#requirement\_sops) | 0.7.2 |
 
@@ -20,8 +20,8 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_mercury"></a> [mercury](#module\_mercury) | github.com/poseidon/typhoon//bare-metal/flatcar-linux/kubernetes | ae82c57eee1f70f9aeba6212d5e2315accfa8f03 |
-| <a name="module_mercury_worker"></a> [mercury\_worker](#module\_mercury\_worker) | github.com/poseidon/typhoon//bare-metal/flatcar-linux/kubernetes/worker | ae82c57eee1f70f9aeba6212d5e2315accfa8f03 |
+| <a name="module_mercury"></a> [mercury](#module\_mercury) | github.com/poseidon/typhoon//bare-metal/flatcar-linux/kubernetes | v1.27.4 |
+| <a name="module_mercury_worker"></a> [mercury\_worker](#module\_mercury\_worker) | github.com/poseidon/typhoon//bare-metal/flatcar-linux/kubernetes/worker | v1.27.4 |
 
 ## Resources
 
