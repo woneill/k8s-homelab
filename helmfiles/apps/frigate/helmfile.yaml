@@ -1,0 +1,10 @@
+repositories:
+  - name: blakeblackshear
+    url: https://blakeblackshear.github.io/blakeshome-charts/
+
+releases:
+  - name: frigate
+    namespace: frigate
+    chart: blakeblackshear/frigate
+    secrets:
+      - secrets.yaml

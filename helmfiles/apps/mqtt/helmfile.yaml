@@ -1,0 +1,8 @@
+repositories:
+  - name: mqtt
+    url: git+https://github.com/halkeye-helm-charts/mosquitto.git@/
+
+releases:
+  - name: mqtt
+    namespace: mqtt
+    chart: mqtt/mosquitto
