@@ -6,6 +6,6 @@ releases:
   - name: homer
     namespace: homer
     chart: djjudas21/homer
-    version: 8.1.7
+    version: 8.1.8
     secrets:
       - secrets.yaml
