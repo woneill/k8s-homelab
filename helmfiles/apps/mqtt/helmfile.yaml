@@ -6,3 +6,4 @@ releases:
   - name: mqtt
     namespace: mqtt
     chart: mqtt/mosquitto
+    version: 0.2.0
