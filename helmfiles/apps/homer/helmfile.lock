@@ -1,7 +1,0 @@
-version: 0.147.0
-dependencies:
-  - name: homer
-    repository: https://djjudas21.github.io/charts/
-    version: 8.1.7
-digest: sha256:070922ea67f10ac150848bb35502d16347dc79a38cf3bd79073cce058f81bb78
-generated: "2023-06-11T22:30:54.802355-04:00"
