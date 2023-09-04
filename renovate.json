@@ -1,3 +1,9 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json"
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "registryAliases": {
+    "git+https://github.com/halkeye-helm-charts/mosquitto.git@/": "https://github.com/halkeye-helm-charts/mosquitto.git"
+  },
+  "pre-commit": {
+    "enabled": true
+  }
 }
