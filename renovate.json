@@ -1,8 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "registryAliases": {
-    "mqtt": "https://github.com/halkeye-helm-charts/mosquitto.git"
-  },
+  "packageRules": [
+    {
+      "matchDepNames": ["mosquitto"],
+      "registryUrls": ["https://github.com/halkeye-helm-charts/mosquitto.git"]
+    }
+  ],
   "pre-commit": {
     "enabled": true
   }
