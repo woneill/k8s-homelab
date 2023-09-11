@@ -77,15 +77,14 @@ provider "registry.terraform.io/hashicorp/tls" {
 }
 
 provider "registry.terraform.io/poseidon/ct" {
-  version     = "0.12.0"
-  constraints = "~> 0.9, 0.12.0"
+  version     = "0.13.0"
+  constraints = "0.13.0"
   hashes = [
-    "h1:PtzWIw0bEn0Yf5pjSxZ/mnH2mHfeNLt34S5lHFVlZOE=",
-    "zh:4a21922a37c66adf9ec2ff067cc01f6ed16cf5b6daac5a2662a83f59c05f86f2",
-    "zh:4bb2b401c91f7f064ef7b286e06ebac34b895710d7a2805af1f117766b3975b5",
-    "zh:798b793f37d62ddd69625cf78b3ba2a2c99b36c4f3809dd46259cdd65b9d5893",
-    "zh:79f4022a294ec4510950c0f7c9a3d1bbc52ec68afd65e1fb0bfff780651bc074",
-    "zh:7deb52303619b5ef2b5b264a1ce69ee9e852eec2603a8ab2add37fbfdd4b1ea5",
+    "h1:/Mlfxihir18D8Y+O4CAtY4ia8E2zZi8o2Q0Q0ZBA7aE=",
+    "h1:cPC6FDr1mKDgzlyaQc4jUALErH0H6ugCM+5mlUnFM9o=",
+    "h1:jZusJZjbV+TZ2lxKaVopvRRrKDWAb2Sq1AUEtgI2xIE=",
+    "h1:sTtlmMjbYiIuaad/23wVrOCSlihKaurcf2668M3ZWio=",
+    "h1:ztsY6QOYlAx/Tz2tGsIP3vlruN1xcDPRZXBh65KkW8c=",
   ]
 }
 
