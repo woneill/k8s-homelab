@@ -1,6 +1,6 @@
 module "mercury" {
   # The tag here maps to the Kubernetes version
-  source = "github.com/poseidon/typhoon//bare-metal/flatcar-linux/kubernetes?ref=v1.27.4"
+  source = "github.com/poseidon/typhoon//bare-metal/flatcar-linux/kubernetes?ref=v1.28.2"
   # source = "github.com/poseidon/typhoon//bare-metal/flatcar-linux/kubernetes?ref=ae82c57eee1f70f9aeba6212d5e2315accfa8f03"
 
   # bare-metal
