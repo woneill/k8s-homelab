@@ -1,6 +1,6 @@
 module "mercury" {
   # The tag here maps to the Kubernetes version
-  source = "github.com/poseidon/typhoon//bare-metal/flatcar-linux/kubernetes?ref=v1.27.4"
+  source = "github.com/poseidon/typhoon//bare-metal/flatcar-linux/kubernetes?ref=v1.28.2"
   # source = "github.com/poseidon/typhoon//bare-metal/flatcar-linux/kubernetes?ref=ae82c57eee1f70f9aeba6212d5e2315accfa8f03"
 
   # bare-metal
@@ -26,7 +26,7 @@ module "mercury" {
 
 module "mercury_worker" {
   # The tag here maps to the Kubernetes version
-  source = "github.com/poseidon/typhoon//bare-metal/flatcar-linux/kubernetes/worker?ref=v1.27.4"
+  source = "github.com/poseidon/typhoon//bare-metal/flatcar-linux/kubernetes/worker?ref=v1.28.2"
   # source = "github.com/poseidon/typhoon//bare-metal/flatcar-linux/kubernetes/worker?ref=ae82c57eee1f70f9aeba6212d5e2315accfa8f03"
 
   for_each = { for worker in var.workers : worker.name => worker }
