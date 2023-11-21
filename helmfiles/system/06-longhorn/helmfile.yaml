@@ -6,6 +6,6 @@ releases:
   - name: longhorn
     namespace: longhorn-system
     chart: longhorn/longhorn
-    version: 1.5.2
+    version: 1.5.3
     secrets:
       - secrets.yaml
