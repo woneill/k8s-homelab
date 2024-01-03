@@ -6,6 +6,6 @@ releases:
   - name: frigate
     namespace: frigate
     chart: blakeblackshear/frigate
-    version: 7.1.0
+    version: 7.2.0
     secrets:
       - secrets.yaml
