@@ -1,6 +1,0 @@
-variant: flatcar
-version: 1.0.0
-systemd:
-  units:
-    - name: iscsid.service
-      enabled: true
