@@ -6,6 +6,6 @@ releases:
   - name: external-dns
     namespace: external-dns
     chart: external-dns/external-dns
-    version: 1.14.4
+    version: 1.14.5
     secrets:
       - secrets.yaml
