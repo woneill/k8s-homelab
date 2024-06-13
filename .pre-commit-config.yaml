@@ -1,25 +1,7 @@
 ---
 repos:
-  - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.83.4
-    hooks:
-      - id: tfupdate
-      - id: terraform_providers_lock
-        args:
-          - --tf-init-args=-upgrade
-      - id: terraform_docs
-        args:
-          - "--args=--sort-by required"
-          - --hook-config=--create-file-if-not-exist=true
-      - id: terraform_fmt
-      - id: terraform_tflint
-        args:
-          - "--args=--config=__GIT_WORKING_DIR__/.tflint.hcl"
-      - id: terraform_tfsec
-      - id: terraform_validate
-        exclude: ^examples
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v4.6.0
     hooks:
       - id: check-added-large-files
       - id: check-merge-conflict
@@ -29,5 +11,4 @@ repos:
       - id: detect-aws-credentials
       - id: detect-private-key
       - id: end-of-file-fixer
-        exclude: "(secrets.json|users.csv)"
       - id: trailing-whitespace
