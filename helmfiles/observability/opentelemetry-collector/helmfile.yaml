@@ -6,13 +6,13 @@ releases:
   - name: otel-collector
     namespace: otel
     chart: open-telemetry/opentelemetry-collector
-    version: 0.100.0
+    version: 0.101.0
     values:
       - values/otel-collector/values.yaml
 
   - name: otel-collector-cluster
     namespace: otel
     chart: open-telemetry/opentelemetry-collector
-    version: 0.100.0
+    version: 0.101.0
     values:
       - values/otel-collector-cluster/values.yaml
