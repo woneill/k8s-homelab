@@ -25,6 +25,17 @@ datasources:
         type: loki
         url: http://loki-gateway.loki.svc.cluster.local/
         version: 1
+      - name: Tempo
+        type: tempo
+        access: proxy
+        orgId: 1
+        url: http://tempo.tempo.svc.cluster.local:3100
+        basicAuth: false
+        isDefault: true
+        version: 1
+        editable: true
+        apiVersion: 1
+        uid: tempo
 
 ## Configure grafana dashboard providers
 ## ref: http://docs.grafana.org/administration/provisioning/#dashboards

@@ -32,10 +32,12 @@ config:
     # send to local loki/Grafana
     otlphttp/loki:
       endpoint: http://loki-gateway.loki.svc.cluster.local/otlp
+    otlphttp/tempo:
+      endpoint: http://tempo-gateway.tempo.svc.cluster.local:4318
   service:
     pipelines:
-      #     traces:
-      #       exporters: [ otlp ]
+      traces:
+        exporters: [otlphttp/tempo]
       #     metrics:
       #       exporters: [ otlp ]
       logs:
