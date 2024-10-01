@@ -1,0 +1,11 @@
+repositories:
+  - name: woneill
+    url: https://woneill.github.io/woneill-charts/
+
+releases:
+  - name: syncthing
+    namespace: syncthing
+    chart: woneill/syncthing
+    version: 0.0.2
+    secrets:
+      - secrets.yaml
