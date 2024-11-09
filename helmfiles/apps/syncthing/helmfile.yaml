@@ -7,5 +7,7 @@ releases:
     namespace: syncthing
     chart: woneill/syncthing
     version: 0.0.5
+    values:
+      - values.yaml
     secrets:
       - secrets.yaml
