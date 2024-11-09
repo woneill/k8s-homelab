@@ -1,0 +1,14 @@
+repositories:
+  - name: k8s-home-lab
+    url: https://k8s-home-lab.github.io/helm-charts/
+
+releases:
+  - name: calibre-web
+    # We need to be in the same namespace as the syncthing PV
+    namespace: syncthing
+    chart: k8s-home-lab/calibre-web
+    version: 9.0.2
+    values:
+      - values.yaml
+    secrets:
+      - secrets.yaml

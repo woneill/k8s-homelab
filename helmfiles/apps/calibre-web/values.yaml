@@ -1,0 +1,13 @@
+image:
+  # repository: ghcr.io/linuxserver/calibre-web
+  repository: lscr.io/linuxserver/calibre-web
+  tag: 0.6.23
+env:
+  TZ: UTC
+  PUID: "1000"
+  PGID: "1000"
+  DOCKER_MODS: linuxserver/mods:universal-calibre
+ingress:
+  main:
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
