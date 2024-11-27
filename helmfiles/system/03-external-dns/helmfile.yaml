@@ -8,4 +8,10 @@ releases:
     chart: external-dns/external-dns
     version: 1.15.0
     secrets:
-      - secrets.yaml
+      - secrets/secrets-digitalocean.yaml
+  - name: external-dns-cloudflare
+    namespace: external-dns
+    chart: external-dns/external-dns
+    version: 1.15.0
+    secrets:
+      - secrets/secrets-cloudflare.yaml
