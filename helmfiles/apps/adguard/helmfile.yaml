@@ -1,0 +1,13 @@
+repositories:
+  - name: woneill
+    url: https://woneill.github.io/woneill-charts/
+
+releases:
+  - name: adguard
+    namespace: adguard
+    chart: woneill/adguard
+    version: 0.2.1
+    values:
+      - values.yaml
+    secrets:
+      - secrets.yaml
