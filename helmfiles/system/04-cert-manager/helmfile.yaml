@@ -9,3 +9,8 @@ releases:
     version: v1.16.2
     values:
       - values.yaml
+
+  - name: cert-manager-csi-driver
+    namespace: cert-manager
+    chart: jetstack/cert-manager-csi-driver
+    version: v0.10.1
