@@ -6,6 +6,6 @@ releases:
   - name: loki
     namespace: loki
     chart: grafana/loki
-    version: 6.23.0
+    version: 6.24.0
     values:
       - values.yaml
