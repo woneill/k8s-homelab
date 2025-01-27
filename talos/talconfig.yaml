@@ -1,0 +1,97 @@
+---
+clusterName: homelab
+talosVersion: ${talosVersion}
+kubernetesVersion: ${kubernetesVersion}
+endpoint: https://192.168.1.23:6443
+nodes:
+  - hostname: controller
+    ipAddress: 192.168.1.24, 192.168.1.25, 192.168.1.26
+    ignoreHostname: true
+    controlPlane: true
+    installDisk: /dev/mmcblk0
+    networkInterfaces:
+      - interface: end0
+        dhcp: true
+        vip:
+          ip: ${vip}
+  - hostname: optiplex7070
+    ipAddress: 192.168.1.14
+    ignoreHostname: true
+    installDisk: /dev/sda
+  - hostname: thinkcentrem920q
+    ipAddress: 192.168.1.15, 192.168.1.16, 192.168.1.17
+    ignoreHostname: true
+    installDisk: /dev/nvme0n1
+
+controlPlane:
+  schematic:
+    customization:
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/iscsi-tools
+          - siderolabs/util-linux-tools
+  # kernelModules:
+  #   # See https://longhorn.io/docs/1.8.0/advanced-resources/os-distro-specific/talos-linux-support/#v2-data-engine
+  #   - name: nvme_tcp
+  #   - name: vfio_pci
+  patches:
+    - |-
+      - op: replace
+        path: /cluster/apiServer/admissionControl/0/configuration/exemptions/namespaces
+        value:
+          - kube-system
+          - longhorn-system
+          - metallb-system
+          - otel
+          - tailscale
+    # # See https://longhorn.io/docs/1.8.0/advanced-resources/os-distro-specific/talos-linux-support/#system-extensions
+    # - |-
+    #   machine:
+    #     kubelet:
+    #       extraMounts:
+    #         - destination: /var/lib/longhorn
+    #           type: bind
+    #           source: /var/lib/longhorn
+    #           options:
+    #             - bind
+    #             - rshared
+    #             - rw
+    - |-
+      machine:
+        sysctls:
+          # Disable kexec based reboot since it hangs
+          kernel.kexec_load_disabled: "1"
+          # # See https://longhorn.io/docs/1.8.0/advanced-resources/os-distro-specific/talos-linux-support/#v2-data-engine
+          # vm.nr_hugepages: "1024"
+
+worker:
+  schematic:
+    customization:
+      systemExtensions:
+        officialExtensions:
+          - siderolabs/iscsi-tools
+          - siderolabs/util-linux-tools
+  kernelModules:
+    # See https://longhorn.io/docs/1.8.0/advanced-resources/os-distro-specific/talos-linux-support/#v2-data-engine
+    - name: nvme_tcp
+    - name: vfio_pci
+  patches:
+    # See https://longhorn.io/docs/1.8.0/advanced-resources/os-distro-specific/talos-linux-support/#system-extensions
+    - |-
+      machine:
+        kubelet:
+          extraMounts:
+            - destination: /var/lib/longhorn
+              type: bind
+              source: /var/lib/longhorn
+              options:
+                - bind
+                - rshared
+                - rw
+    - |-
+      machine:
+        sysctls:
+          # Disable kexec based reboot since it hangs
+          kernel.kexec_load_disabled: "1"
+          # See https://longhorn.io/docs/1.8.0/advanced-resources/os-distro-specific/talos-linux-support/#v2-data-engine
+          vm.nr_hugepages: "1024"
