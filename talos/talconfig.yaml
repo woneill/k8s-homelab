@@ -40,6 +40,7 @@ controlPlane:
         path: /cluster/apiServer/admissionControl/0/configuration/exemptions/namespaces
         value:
           - kube-system
+          - cert-manager
           - longhorn-system
           - metallb-system
           - otel
