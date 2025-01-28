@@ -1,3 +1,6 @@
+commonLabels:
+  sync-stage: system
+
 releases:
   - name: metallb-pools
     namespace: metallb-system

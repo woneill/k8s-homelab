@@ -1,3 +1,6 @@
+commonLabels:
+  sync-stage: system
+
 repositories:
   - name: tailscale
     url: https://pkgs.tailscale.com/helmcharts

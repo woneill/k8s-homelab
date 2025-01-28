@@ -1,3 +1,6 @@
+commonLabels:
+  sync-stage: system
+
 releases:
   - name: cert-manager-issuers
     namespace: cert-manager
