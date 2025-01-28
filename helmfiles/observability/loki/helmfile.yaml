@@ -1,3 +1,6 @@
+commonLabels:
+  sync-stage: observability
+
 repositories:
   - name: grafana
     url: https://grafana.github.io/helm-charts
