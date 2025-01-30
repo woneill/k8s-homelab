@@ -1,11 +1,13 @@
 repositories:
   - name: blakeblackshear
     url: https://blakeblackshear.github.io/blakeshome-charts/
+  - name: blakeblackshear-fork
+    url: git+https://github.com/rdmcguire/blakeshome-charts@charts/frigate?ref=master
 
 releases:
   - name: frigate
     namespace: frigate
-    chart: blakeblackshear/frigate
-    version: 7.6.0
+    chart: blakeblackshear-fork/frigate
+    version: 7.7.0
     secrets:
       - secrets.yaml
