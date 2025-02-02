@@ -9,5 +9,7 @@ releases:
     namespace: frigate
     chart: blakeblackshear-fork/frigate
     version: 7.7.0
+    values:
+      - values.yaml
     secrets:
       - secrets.yaml

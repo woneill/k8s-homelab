@@ -37,8 +37,11 @@ controlPlane:
         value:
           - kube-system
           - cert-manager
+          - frigate
+          - inteldeviceplugins-system
           - longhorn-system
           - metallb-system
+          - node-feature-discovery
           - otel
           - tailscale
     - |-

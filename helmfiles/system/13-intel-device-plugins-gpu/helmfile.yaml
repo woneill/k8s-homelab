@@ -1,0 +1,15 @@
+commonLabels:
+  sync-stage: system
+
+repositories:
+  - name: intel
+    url: https://intel.github.io/helm-charts/
+
+releases:
+  - name: dp-gpu-plugin
+    namespace: inteldeviceplugins-system
+    chart: intel/intel-device-plugins-gpu
+    version: 0.32.0
+    set:
+      - name: nodeFeatureRule
+        value: true

@@ -1,0 +1,14 @@
+commonLabels:
+  sync-stage: system
+
+repositories:
+  - name: intel
+    url: https://intel.github.io/helm-charts/
+
+releases:
+  - name: dp-operator
+    namespace: inteldeviceplugins-system
+    chart: intel/intel-device-plugins-operator
+    wait: true
+    waitForJobs: true
+    version: 0.32.0
