@@ -1,3 +1,6 @@
+commonLabels:
+  sync-stage: apps
+
 repositories:
   - name: woneill
     url: https://woneill.github.io/woneill-charts/

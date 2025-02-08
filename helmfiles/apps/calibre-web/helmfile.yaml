@@ -1,3 +1,6 @@
+commonLabels:
+  sync-stage: apps
+
 repositories:
   - name: k8s-home-lab
     url: https://k8s-home-lab.github.io/helm-charts/

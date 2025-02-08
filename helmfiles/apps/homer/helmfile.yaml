@@ -1,3 +1,6 @@
+commonLabels:
+  sync-stage: apps
+
 repositories:
   - name: djjudas21
     url: https://djjudas21.github.io/charts/

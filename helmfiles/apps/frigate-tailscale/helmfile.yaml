@@ -1,3 +1,6 @@
+commonLabels:
+  sync-stage: apps
+
 releases:
   - name: frigate-tailscale
     namespace: frigate

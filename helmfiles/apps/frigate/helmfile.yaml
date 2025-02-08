@@ -1,3 +1,6 @@
+commonLabels:
+  sync-stage: apps
+
 repositories:
   - name: blakeblackshear
     url: https://blakeblackshear.github.io/blakeshome-charts/
