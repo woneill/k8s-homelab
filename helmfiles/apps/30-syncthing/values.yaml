@@ -1,3 +1,2 @@
 persistence:
-  accessModes:
-    - ReadWriteMany
+  size: 20Gi
