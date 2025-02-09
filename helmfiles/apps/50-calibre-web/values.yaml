@@ -11,3 +11,20 @@ ingress:
   main:
     annotations:
       nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
+persistence:
+  config:
+    enabled: true
+    mountPath: /config
+  books:
+    enabled: true
+    mountPath: /books
+    accessMode: ReadWriteOnce
+    size: 10Gi
+probes:
+  startup:
+    spec:
+      initialDelaySeconds: 90
+      timeoutSeconds: 1
+      ## This means it has a maximum of 5*30=150 seconds to start up before it fails
+      periodSeconds: 5
+      failureThreshold: 30
