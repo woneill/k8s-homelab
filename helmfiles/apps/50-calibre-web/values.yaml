@@ -1,7 +1,7 @@
 image:
   # repository: ghcr.io/linuxserver/calibre-web
   repository: lscr.io/linuxserver/calibre-web
-  tag: 0.6.24@sha256:e45459ff1c9acae8acfb50a130a12ffcbab96d8bfceca28780a12c53a410c332
+  tag: 2021.12.16@sha256:ef318f14a6581e0d35b40d1e4784c66a7ec9d628b1580c0a318be6f7d4db05f3
 env:
   TZ: UTC
   PUID: "1000"
