@@ -9,7 +9,7 @@ releases:
   - name: tempo
     namespace: tempo
     chart: grafana/tempo
-    version: 1.18.1
+    version: 1.18.2
     values:
       - values.yaml
     secrets:
