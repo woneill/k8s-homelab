@@ -3,7 +3,7 @@ commonLabels:
 
 repositories:
   - name: mqtt
-    url: git+https://github.com/halkeye-helm-charts/mosquitto.git@/
+    url: git+https://github.com/halkeye-helm-charts/mosquitto
 
 releases:
   - name: mqtt
