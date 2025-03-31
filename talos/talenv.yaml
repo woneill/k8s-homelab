@@ -1,3 +1,3 @@
-talosVersion: v1.9.3
-kubernetesVersion: v1.32.1
+talosVersion: v1.9.5
+kubernetesVersion: v1.32.3
 vip: 192.168.1.23
