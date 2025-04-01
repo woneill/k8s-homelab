@@ -10,6 +10,6 @@ releases:
     namespace: tailscale
     createNamespace: true
     chart: tailscale/tailscale-operator
-    version: 1.80.3
+    version: 1.82.0
     secrets:
       - secrets.yaml
