@@ -1,0 +1,13 @@
+apiVersion: volsync.backube/v1alpha1
+kind: ReplicationSource
+metadata:
+  name: calibre-web-sync
+spec:
+  sourcePVC: calibre-web-books
+  syncthing:
+    serviceType: ClusterIP
+    # List of peers that this ReplicationSource should connect to.
+    peers:
+      {{- with .Values.peers }}
+      {{- toYaml . | nindent 6 }}
+      {{- end }}
