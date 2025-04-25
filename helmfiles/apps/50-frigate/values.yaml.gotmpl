@@ -1,17 +1,22 @@
+image:
+  tag: 0.15.1
 # strategyType: RollingUpdate
 securityContext:
   capabilities:
     add:
-      - CAP_PERFMON
+      - PERFMON
 persistence:
   config:
     enabled: true
     ephemeralWritableConfigYaml: true
+    size: "10Gi"
   media:
-    # enabled: true
-    enabled: false
+    enabled: true
 ingress:
   enabled: true
 resources:
   limits:
     gpu.intel.com/i915: 1
+
+config:
+    {{ fetchSecretValue "ref+sops://config.yaml?key_type=filepath&format=yaml" | toYaml }}

@@ -11,6 +11,6 @@ releases:
     chart: blakeblackshear/frigate
     version: 7.8.0
     values:
-      - values.yaml
+      - values.yaml.gotmpl
     secrets:
       - secrets.yaml
