@@ -5,6 +5,8 @@ record:
     enabled: ENC[AES256_GCM,data:60WvbQ==,iv:5t796vZ+7ink7cIPAtUZMW9ihyCmV2qThbZxahIfqc4=,tag:RT+a+YdiB+9ogrX5+gsyfQ==,type:bool]
 snapshots:
     enabled: ENC[AES256_GCM,data:0sDjEQ==,iv:uaPFp1TAazVLAOjV/rbZV7XO6Z+0/g97O3i0fSAEH0E=,tag:yco9hZMH8mkKZ/BBNGekQQ==,type:bool]
+    retain:
+        default: ENC[AES256_GCM,data:Ow==,iv:GDzQo2yXdLZd7cWIYIsK41IPEdDr3/ibG8kA4yPs7Ew=,tag:+wC3iZu/ytzWrVHjo5aKhw==,type:int]
 detectors:
     ov:
         type: ENC[AES256_GCM,data:xANcJV1dq/c=,iv:Augjvt1/w07SfgL1nMpVd7loggARDDIv7C/AA4afwpw=,tag:lOfhoSN/c+LnJsKl0U6piA==,type:str]
@@ -78,7 +80,7 @@ sops:
             M21wUlk0YjkyY0RlWDhQeE1jemtib1EKCKDkOv0PlcA3hAqukiY0F+wjNUrIhzMJ
             VEWm2coDvWXapQ48AghT+5uxcyUtmX0x8voVcQLY3XZ6UylBOFyffg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-04-25T17:33:15Z"
-    mac: ENC[AES256_GCM,data:kn0iF3LUx18WftBJaXei72b8+TBB/lYDGVafQpb1701B5NlAzb+vDCgbZU3W81Kl4RXBIdyI9Ahgh1NkuF0djyNZbd8C6b7zKGB9RsBHy5lyMPNXjcC2LxaQDfqmeww6kU+S7HX/heiQaepZjp9JyyJDeM4pqFKSiIPxFmgWcLk=,iv:6TG5Gs66shiqbR+uTlCo7nIPGXrrVTmTjhuJyvUATyY=,tag:0OoWNwKfjwx6NBlc9YTUoQ==,type:str]
+    lastmodified: "2025-04-30T13:08:40Z"
+    mac: ENC[AES256_GCM,data:EvLhy0QyfX6xMeFY/axGcEMWl8F7gqUibwsZc+LlGRp4VhW31NcbppT/4hv2AZtPKQk81aQXRkD3PWU+dJZvQQuMYSk6Rro1DNxGpZIIrmyZt5VLk+YIUNXb+fnT79ACielBDZj/PvZAuf+mVAZ5Xg882dNqfatOifhJcrJ7rvo=,iv:P/jUyXMShEgLW96n89C8ty7b1/0AgL9lrNDqjoSVqis=,tag:jtUTOfjs89Dw902Eaphq2g==,type:str]
     unencrypted_suffix: _unencrypted
     version: 3.10.2
