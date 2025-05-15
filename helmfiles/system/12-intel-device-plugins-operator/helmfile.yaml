@@ -11,4 +11,4 @@ releases:
     chart: intel/intel-device-plugins-operator
     wait: true
     waitForJobs: true
-    version: 0.32.0
+    version: 0.32.1
