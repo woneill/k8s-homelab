@@ -19,3 +19,5 @@ jobs:
         with:
           helmfile-workdirectory: helmfiles
           helmfile-args: lint
+          helm-plugins: >
+            https://github.com/jkroepke/helm-secrets
