@@ -1,0 +1,21 @@
+---
+name: Helmfile linting
+
+on:
+  push: {}
+  pull_request: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - uses: helmfile/helmfile-action@v2.0.4
+        with:
+          helmfile-workdirectory: helmfiles
+          helmfile-args: lint
