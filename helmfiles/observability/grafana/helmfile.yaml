@@ -9,7 +9,7 @@ releases:
   - name: grafana
     namespace: grafana
     chart: grafana/grafana
-    version: 9.2.6
+    version: 9.2.7
     values:
       - values.yaml
     secrets:
