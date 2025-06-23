@@ -1,2 +1,4 @@
 persistence:
   defaultDataLocality: "best-effort"
+defaultSettings:
+  concurrentAutomaticEngineUpgradePerNodeLimit: 1
