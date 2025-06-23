@@ -3,12 +3,18 @@ kind: Ingress
 metadata:
   name: frigate-tailscale
 spec:
-  defaultBackend:
-    service:
-      name: frigate
-      port:
-        name: http
   ingressClassName: tailscale
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frigate
+                port:
+                  number: 5000
+
   tls:
     - hosts:
         - frigate
