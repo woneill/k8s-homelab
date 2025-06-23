@@ -14,6 +14,13 @@ loki:
           period: 24h
         object_store: filesystem # we're storing on filesystem so there's no real persistence here.
         schema: v13
+  pattern_ingester:
+    enabled: true
+  limits_config:
+    allow_structured_metadata: true
+    volume_enabled: true
+  ruler:
+    enable_api: true
 singleBinary:
   replicas: 1
 read:
@@ -22,5 +29,22 @@ backend:
   replicas: 0
 write:
   replicas: 0
-limits_config:
-  allow_structured_metadata: true
+
+ingester:
+  replicas: 0
+querier:
+  replicas: 0
+queryFrontend:
+  replicas: 0
+queryScheduler:
+  replicas: 0
+distributor:
+  replicas: 0
+compactor:
+  replicas: 0
+indexGateway:
+  replicas: 0
+bloomCompactor:
+  replicas: 0
+bloomGateway:
+  replicas: 0
