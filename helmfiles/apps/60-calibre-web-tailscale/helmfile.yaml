@@ -1,0 +1,7 @@
+commonLabels:
+  sync-stage: apps
+
+releases:
+  - name: calibre-web-tailscale
+    namespace: calibre-web
+    chart: .
