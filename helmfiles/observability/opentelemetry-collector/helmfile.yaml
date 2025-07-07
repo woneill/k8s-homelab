@@ -19,3 +19,5 @@ releases:
     version: 0.127.2
     values:
       - values/otel-collector-cluster/values.yaml
+    secrets:
+      - values/otel-collector-cluster/secrets.yaml
