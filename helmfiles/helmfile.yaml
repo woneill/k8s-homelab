@@ -1,6 +1,7 @@
 ---
 helmDefaults:
   # verify: true
+  atomic: true
   wait: true
   waitForJobs: true
 

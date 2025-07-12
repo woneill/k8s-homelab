@@ -38,11 +38,11 @@ controlPlane:
           - kube-system
           - cert-manager
           - frigate
+          - grafana-cloud
           - inteldeviceplugins-system
           - longhorn-system
           - metallb-system
           - node-feature-discovery
-          - otel
           - tailscale
     - |-
       machine:
