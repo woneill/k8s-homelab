@@ -9,7 +9,7 @@ releases:
   - name: grafana-k8s-monitoring
     namespace: grafana-cloud
     chart: grafana/k8s-monitoring
-    version: 3.1.2
+    version: 3.1.3
     secrets:
       - secrets.yaml
     timeout: 300
