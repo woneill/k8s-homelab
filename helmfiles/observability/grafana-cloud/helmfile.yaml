@@ -13,15 +13,6 @@ releases:
     secrets:
       - secrets.yaml
     timeout: 300
-    # passes --disable-validation to helm 3 diff plugin, this requires diff plugin >= 3.1.2
-    # It may be helpful to deploy charts with helm api v1 CRDS
-    # https://github.com/roboll/helmfile/pull/1373
-    disableValidation: true
-    # passes --disable-validation to helm 3 diff plugin, this requires diff plugin >= 3.1.2
-    # It is useful when any release contains custom resources for CRDs that is not yet installed onto the cluster.
-    # https://github.com/roboll/helmfile/pull/1618
-    disableValidationOnInstall: true
-    # passes --disable-openapi-validation to helm 3 diff plugin, this requires diff plugin >= 3.1.2
-    # It may be helpful to deploy charts with helm api v1 CRDS
-    # https://github.com/roboll/helmfile/pull/1373
-    disableOpenAPIValidation: true
+    # "Trick" helm into thinking the CRDs are already installed for diffs
+    apiVersions:
+      - collectors.grafana.com/v1alpha1/Alloy
