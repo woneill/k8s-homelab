@@ -1,0 +1,11 @@
+postgresql:
+  enabled: false
+sqlite:
+  enabled: true
+service:
+  type: LoadBalancer
+podSecurityContext:
+  fsGroup: 1000
+persistence:
+  enabled: true
+  mountPath: /config-db

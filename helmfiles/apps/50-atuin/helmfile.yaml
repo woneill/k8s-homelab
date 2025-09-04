@@ -1,0 +1,15 @@
+commonLabels:
+  sync-stage: apps
+
+repositories:
+  - name: woneill-atuin-fork
+    url: git+https://github.com/woneill/atuin-helm-charts@charts/atuin?ref=update
+releases:
+  - name: atuin
+    namespace: atuin
+    chart: woneill-atuin-fork/atuin
+    version: 0.5.0
+    values:
+      - values.yaml
+    secrets:
+      - secrets.yaml
