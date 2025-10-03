@@ -9,4 +9,4 @@ releases:
   - name: nfd
     namespace: node-feature-discovery
     chart: nfd/node-feature-discovery
-    version: 0.17.4
+    version: 0.18.0
