@@ -1,12 +1,8 @@
 commonLabels:
   sync-stage: system
 
-repositories:
-  - name: nfd
-    url: https://kubernetes-sigs.github.io/node-feature-discovery/charts
-
 releases:
   - name: nfd
     namespace: node-feature-discovery
-    chart: nfd/node-feature-discovery
+    chart: oci://registry.k8s.io/nfd/charts/node-feature-discovery
     version: 0.18.1
