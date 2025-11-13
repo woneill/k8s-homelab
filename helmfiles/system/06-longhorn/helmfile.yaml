@@ -9,7 +9,7 @@ releases:
   - name: longhorn
     namespace: longhorn-system
     chart: longhorn/longhorn
-    version: 1.10.0
+    version: 1.10.1
     secrets:
       - secrets.yaml
     values:
