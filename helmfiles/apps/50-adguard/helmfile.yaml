@@ -9,7 +9,7 @@ releases:
   - name: adguard
     namespace: adguard
     chart: woneill/adguard
-    version: 0.3.14
+    version: 0.3.15
     values:
       - values.yaml
     secrets:
