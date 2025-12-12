@@ -9,7 +9,7 @@ releases:
   - name: dp-gpu-plugin
     namespace: inteldeviceplugins-system
     chart: intel/intel-device-plugins-gpu
-    version: 0.34.0
+    version: 0.34.1
     set:
       - name: nodeFeatureRule
         value: true
