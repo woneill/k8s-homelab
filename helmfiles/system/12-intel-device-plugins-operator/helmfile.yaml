@@ -11,4 +11,4 @@ releases:
     chart: intel/intel-device-plugins-operator
     wait: true
     waitForJobs: true
-    version: 0.34.1-helm.0
+    version: 0.34.1
