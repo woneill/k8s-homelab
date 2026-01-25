@@ -11,10 +11,10 @@ spec:
       name: letsencrypt-production-clusterissuer-account-key
     solvers:
       - dns01:
-          digitalocean:
-            tokenSecretRef:
-              name: digitalocean-dns
-              key: access-token
+          cloudflare:
+            apiTokenSecretRef:
+              name: cloudflare-dns
+              key: api-token
         selector:
           dnsZones:
             {{- range .Values.letsencrypt.dnsZones }}
