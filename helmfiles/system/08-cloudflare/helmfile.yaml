@@ -1,14 +1,14 @@
 commonLabels:
   sync-stage: system
-
 repositories:
-  - name: cloudflare
-    url: https://cloudflare.github.io/helm-charts
-
+- name: cloudflare
+  url: https://cloudflare.github.io/helm-charts
 releases:
-  - name: cloudflare-tunnel
-    namespace: cloudflare
-    chart: cloudflare/cloudflare-tunnel
-    version: 0.3.2
-    secrets:
-      - secrets.yaml
+- name: cloudflare-tunnel
+  namespace: cloudflare
+  chart: cloudflare/cloudflare-tunnel
+  version: 0.3.2
+  secrets:
+  - secrets.yaml
+  values:
+  - values.yaml
