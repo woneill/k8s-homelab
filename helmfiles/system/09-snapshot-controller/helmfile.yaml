@@ -9,4 +9,4 @@ releases:
   - name: snapshot-controller
     namespace: kube-system
     chart: piraeus-charts/snapshot-controller
-    version: 5.0.2
+    version: 5.0.3
