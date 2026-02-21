@@ -16,4 +16,4 @@ releases:
   - name: cert-manager-csi-driver
     namespace: cert-manager
     chart: jetstack/cert-manager-csi-driver
-    version: v0.12.0
+    version: v0.12.1
