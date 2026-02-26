@@ -9,7 +9,7 @@ releases:
   - name: calibre-web
     namespace: calibre-web
     chart: k8s-home-lab/calibre-web
-    version: 9.0.3
+    version: 9.1.0
     values:
       - values.yaml
     secrets:
