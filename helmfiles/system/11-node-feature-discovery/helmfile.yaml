@@ -1,8 +1,0 @@
-commonLabels:
-  sync-stage: system
-
-releases:
-  - name: nfd
-    namespace: node-feature-discovery
-    chart: oci://registry.k8s.io/nfd/charts/node-feature-discovery
-    version: 0.18.3
