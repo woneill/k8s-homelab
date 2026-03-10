@@ -2,3 +2,7 @@ persistence:
   defaultDataLocality: "best-effort"
 defaultSettings:
   concurrentAutomaticEngineUpgradePerNodeLimit: "1"
+image:
+  longhorn:
+    instanceManager:
+      tag: "v1.11.0-hotfix-1"

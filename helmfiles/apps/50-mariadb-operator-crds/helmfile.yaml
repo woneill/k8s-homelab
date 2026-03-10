@@ -1,0 +1,9 @@
+commonLabels:
+  sync-stage: apps
+repositories:
+- name: mariadb-operator
+  url: https://helm.mariadb.com/mariadb-operator
+releases:
+- name: mariadb-operator-crds
+  chart: mariadb-operator/mariadb-operator-crds
+  version: 25.10.4
