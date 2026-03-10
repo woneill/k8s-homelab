@@ -1,0 +1,22 @@
+commonLabels:
+  sync-stage: system
+repositories:
+- name: traefik
+  url: https://traefik.github.io/charts
+releases:
+- name: traefik
+  namespace: traefik
+  chart: traefik/traefik
+  version: 39.0.0
+  values:
+  - values.yaml
+  secrets:
+  - secrets.yaml
+  hooks:
+  - events: ["presync"]
+    showlogs: true
+    command: "/bin/bash"
+    args:
+    - "-ec"
+    - |-
+      kubectl apply --server-side --force-conflicts -k https://github.com/traefik/traefik-helm-chart/traefik/crds/
