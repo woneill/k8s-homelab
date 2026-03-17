@@ -6,4 +6,4 @@ repositories:
 releases:
 - name: mariadb-operator-crds
   chart: mariadb-operator/mariadb-operator-crds
-  version: 25.10.4
+  version: 26.3.0
