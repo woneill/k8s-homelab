@@ -1,10 +1,10 @@
 image:
-  tag: 0.15.1
+  tag: 0.17.1
 # strategyType: RollingUpdate
 securityContext:
   capabilities:
     add:
-      - PERFMON
+    - PERFMON
 persistence:
   config:
     enabled: true
@@ -12,11 +12,8 @@ persistence:
     size: "10Gi"
   media:
     enabled: true
-ingress:
-  enabled: true
 resources:
   limits:
-    gpu.intel.com/i915: 1
-
-config:
-    {{ fetchSecretValue "ref+sops://config.yaml?key_type=filepath&format=yaml" | toYaml }}
+    deviceclass.resource.kubernetes.io/gpu.intel.com: 1
+ingress:
+  enabled: true

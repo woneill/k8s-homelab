@@ -40,10 +40,9 @@ controlPlane:
                   - cert-manager
                   - frigate
                   - grafana-cloud
-                  - inteldeviceplugins-system
+                  - intel-gpu-resource-driver
                   - longhorn-system
                   - metallb-system
-                  - node-feature-discovery
                   - tailscale
   - |-
     machine:
@@ -52,6 +51,17 @@ controlPlane:
         kernel.kexec_load_disabled: "1"
         # # See https://longhorn.io/docs/1.8.0/advanced-resources/os-distro-specific/talos-linux-support/#v2-data-engine
         # vm.nr_hugepages: "1024"
+  - |-
+    cluster:
+      apiServer:
+        extraArgs:
+          feature-gates: "DRAExtendedResource=true,DynamicResourceAllocation=true"
+      controllerManager:
+        extraArgs:
+          feature-gates: "DRAExtendedResource=true,DynamicResourceAllocation=true"
+      scheduler:
+        extraArgs:
+          feature-gates: "DRAExtendedResource=true,DynamicResourceAllocation=true"
 worker:
   schematic:
     customization:
@@ -91,3 +101,21 @@ worker:
     kind: WatchdogTimerConfig
     device: /dev/watchdog0
     timeout: 5m
+  - |-
+    # Needed for intel-gpu-resource-driver
+    machine:
+      files:
+      - path: /etc/cri/conf.d/20-customization.part
+        op: create
+        content: |
+          [plugins."io.containerd.cri.v1.images"]
+            discard_unpacked_layers = false
+          # Set cdi dirs to /var/ because default locations are not writeable in talos
+          [plugins."io.containerd.cri.v1.runtime"]
+            cdi_spec_dirs = ["/var/cdi/static", "/var/cdi/dynamic"]
+            device_ownership_from_security_context = true
+  - |-
+    machine:
+      kubelet:
+        extraArgs:
+          feature-gates: "DRAExtendedResource=true,DynamicResourceAllocation=true"

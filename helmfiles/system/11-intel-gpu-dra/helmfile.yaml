@@ -1,0 +1,24 @@
+commonLabels:
+  sync-stage: system
+releases:
+- name: intel-gpu-resource-driver
+  namespace: intel-gpu-resource-driver
+  chart: oci://ghcr.io/intel/intel-resource-drivers-for-kubernetes/intel-gpu-resource-driver-chart
+  version: 0.9.1
+  set:
+  - name: cdi.staticPath
+    value: "/var/cdi/static"
+  - name: cdi.dynamicPath
+    value: "/var/cdi/dynamic"
+  - name: enableDRAExtendedResources
+    value: "true"
+    # - name: kubeletPlugin.extraVolumeMounts[0].name
+    #   value: dri
+    # - name: kubeletPlugin.extraVolumeMounts[0].mountPath
+    #   value: /dev/dri
+    # - name: kubeletPlugin.extraVolumes[0].name
+    #   value: dri
+    # - name: kubeletPlugin.extraVolumes[0].hostPath.path
+    #   value: /dev/dri
+    # - name: kubeletPlugin.extraVolumes[0].hostPath.type
+    #   value: DirectoryOrCreate

@@ -1,16 +1,15 @@
 commonLabels:
   sync-stage: apps
-
 repositories:
-  - name: blakeblackshear
-    url: https://blakeblackshear.github.io/blakeshome-charts/
-
+- name: blakeblackshear
+  url: https://blakeblackshear.github.io/blakeshome-charts/
 releases:
-  - name: frigate
-    namespace: frigate
-    chart: blakeblackshear/frigate
-    version: 7.8.0
-    values:
-      - values.yaml.gotmpl
-    secrets:
-      - secrets.yaml
+- name: frigate
+  namespace: frigate
+  chart: blakeblackshear/frigate
+  version: 7.8.0
+  values:
+  - values.yaml
+  - config.yaml.gotmpl
+  secrets:
+  - secrets.yaml
