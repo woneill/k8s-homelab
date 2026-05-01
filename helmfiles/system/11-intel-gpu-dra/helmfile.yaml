@@ -4,7 +4,7 @@ releases:
 - name: intel-gpu-resource-driver
   namespace: intel-gpu-resource-driver
   chart: oci://ghcr.io/intel/intel-resource-drivers-for-kubernetes/intel-gpu-resource-driver-chart
-  version: 0.10.0
+  version: 0.10.1
   set:
   - name: cdi.staticPath
     value: "/var/cdi/static"
