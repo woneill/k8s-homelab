@@ -1,0 +1,24 @@
+# fullnameOverride: external-dns-unifi
+txtOwnerId: external-dns-unifi
+provider:
+  name: webhook
+  webhook:
+    image:
+      repository: ghcr.io/home-operations/external-dns-unifi-webhook
+      tag: 0.10.1
+    livenessProbe:
+      httpGet:
+        path: /healthz
+        port: http-webhook
+      initialDelaySeconds: 10
+      timeoutSeconds: 5
+    readinessProbe:
+      httpGet:
+        path: /readyz
+        port: http-webhook
+      initialDelaySeconds: 10
+      timeoutSeconds: 5
+triggerLoopOnEvent: true
+policy: sync
+sources:
+- ingress

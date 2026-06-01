@@ -3,16 +3,30 @@ commonLabels:
 repositories:
 - name: external-dns
   url: https://kubernetes-sigs.github.io/external-dns/
+- name: bedag
+  url: https://bedag.github.io/helm-charts
 releases:
-- name: external-dns-adguard
-  namespace: external-dns
-  chart: external-dns/external-dns
-  version: 1.21.1
-  secrets:
-  - secrets/secrets-adguard.yaml
 - name: external-dns-cloudflare
   namespace: external-dns
   chart: external-dns/external-dns
   version: 1.21.1
   secrets:
-  - secrets/secrets-cloudflare.yaml
+  - secrets/cloudflare.yaml
+- name: external-dns-unifi
+  namespace: external-dns
+  chart: external-dns/external-dns
+  version: 1.21.1
+  secrets:
+  - secrets/unifi.yaml
+  values:
+  - values/unifi.yaml
+  needs:
+  - external-dns-unifi-secret
+- name: external-dns-unifi-secret
+  namespace: external-dns
+  chart: bedag/raw
+  version: 2.0.2
+  values:
+  - values/unifi-secret.yaml
+  secrets:
+  - secrets/unifi-secret.yaml
