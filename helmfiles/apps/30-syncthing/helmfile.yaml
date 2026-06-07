@@ -9,7 +9,7 @@ releases:
   - name: syncthing
     namespace: syncthing
     chart: woneill/syncthing
-    version: 0.3.0
+    version: 0.3.1
     values:
       - values.yaml
     secrets:
