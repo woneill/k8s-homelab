@@ -7,6 +7,6 @@ releases:
 - name: mariadb-operator
   namespace: mariadb
   chart: mariadb-operator/mariadb-operator
-  version: 26.3.0
+  version: 26.6.0
   values:
   - values.yaml
