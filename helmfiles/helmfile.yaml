@@ -8,4 +8,5 @@ helmDefaults:
 helmfiles:
   - path: system/*/helmfile.yaml
   # - path: observability/*/helmfile.yaml
+  - path: databases/*/helmfile.yaml
   - path: apps/*/helmfile.yaml

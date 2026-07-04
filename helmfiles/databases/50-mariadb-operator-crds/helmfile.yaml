@@ -1,5 +1,5 @@
 commonLabels:
-  sync-stage: apps
+  sync-stage: databases
 repositories:
   - name: mariadb-operator
     url: https://helm.mariadb.com/mariadb-operator
