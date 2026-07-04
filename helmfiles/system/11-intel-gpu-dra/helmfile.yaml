@@ -12,6 +12,8 @@ releases:
     value: "/var/cdi/dynamic"
   - name: enableDRAExtendedResources
     value: "true"
+  - name: kubeletPlugin.healthMonitoring.enabled
+    value: "false"
   - name: kubeletPlugin.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].key
     value: "extensions.talos.dev/i915"
   - name: kubeletPlugin.affinity.nodeAffinity.requiredDuringSchedulingIgnoredDuringExecution.nodeSelectorTerms[0].matchExpressions[0].operator
