@@ -1,0 +1,94 @@
+mariadb:
+  enabled: false
+
+podSecurityContext:
+  seccompProfile:
+    type: RuntimeDefault
+
+securityContext:
+  allowPrivilegeEscalation: false
+  seccompProfile:
+    type: RuntimeDefault
+
+externalDatabase:
+  enabled: true
+  host: "grimmory-mariadb"
+  port: 3306
+
+  ## Database user
+  username: grimmory
+
+  ## Database name
+  database: grimmory-mariadb
+
+  ## Use an existing secret
+  # existingSecret:
+  #   enabled: true
+  #   secretName: grimmory-mariadb
+  #   passwordKey: password
+
+  existingSecret:
+    enabled: true
+    secretName: grimmory-mariadb-user
+    passwordKey: password
+
+extraObjects:
+  - apiVersion: k8s.mariadb.com/v1alpha1
+    kind: MariaDB
+    metadata:
+      name: grimmory-mariadb
+      namespace: grimmory
+    spec:
+      username: grimmory
+      rootPasswordSecretKeyRef:
+        name: grimmory-mariadb-root
+        key: root-password
+        generate: true
+      passwordSecretKeyRef:
+        name: grimmory-mariadb-user
+        key: password
+        generate: true
+      storage:
+        size: 10Gi
+
+  - apiVersion: k8s.mariadb.com/v1alpha1
+    kind: Database
+    metadata:
+      name: grimmory-mariadb
+      namespace: grimmory
+    spec:
+      mariaDbRef:
+        name: grimmory-mariadb
+        waitForIt: true
+      name: grimmory-mariadb
+
+  - apiVersion: k8s.mariadb.com/v1alpha1
+    kind: User
+    metadata:
+      name: grimmory
+      namespace: grimmory
+    spec:
+      mariaDbRef:
+        name: grimmory-mariadb
+        waitForIt: true
+      name: grimmory
+      host: "%"
+      passwordSecretKeyRef:
+        name: grimmory-mariadb-user
+        key: password
+
+  - apiVersion: k8s.mariadb.com/v1alpha1
+    kind: Grant
+    metadata:
+      name: grimmory-all-on-grimmory-mariadb
+      namespace: grimmory
+    spec:
+      mariaDbRef:
+        name: grimmory-mariadb
+        waitForIt: true
+      database: grimmory-mariadb
+      table: "*"
+      username: grimmory
+      host: "%"
+      privileges:
+        - ALL PRIVILEGES

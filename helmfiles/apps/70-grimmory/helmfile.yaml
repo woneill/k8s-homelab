@@ -1,0 +1,38 @@
+commonLabels:
+  sync-stage: apps
+releases:
+  - name: grimmory
+    namespace: grimmory
+    chart: oci://ghcr.io/grimmory-tools/helm-charts/grimmory
+    version: 3.2.4
+    hooks:
+      - events: ["presync"]
+        command: kubectl
+        args:
+          - wait
+          - --for=condition=available
+          - --timeout=180s
+          - deployment/mariadb-operator-webhook
+          - -n
+          - mariadb
+    strategicMergePatches:
+      - apiVersion: apps/v1
+        kind: Deployment
+        metadata:
+          name: grimmory
+        spec:
+          template:
+            spec:
+              initContainers:
+                - name: wait-for-database
+                  securityContext:
+                    allowPrivilegeEscalation: false
+                    capabilities:
+                      drop:
+                        - ALL
+                    seccompProfile:
+                      type: RuntimeDefault
+    values:
+      - values.yaml
+    secrets:
+      - secrets.yaml
