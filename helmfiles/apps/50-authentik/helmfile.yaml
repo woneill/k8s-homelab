@@ -9,7 +9,7 @@ releases:
   - name: authentik
     namespace: authentik
     chart: authentik/authentik
-    version: 2026.5.3
+    version: 2026.5.6
     values:
       - values.yaml
     secrets:
