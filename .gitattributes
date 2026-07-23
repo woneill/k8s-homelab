@@ -1,4 +1,5 @@
 **/secrets*.yaml diff=sopsdiffer
 **/secrets/*.yaml diff=sopsdiffer
 helmfiles/apps/50-frigate/config.yaml diff=sopsdiffer
+helmfiles/secrets/*.yaml diff=sopsdiffer
 talos/talsecret.sops.yaml diff=sopsdiffer

@@ -1,0 +1,17 @@
+commonLabels:
+  sync-stage: apps
+
+repositories:
+  - name: authentik
+    url: https://charts.goauthentik.io
+
+releases:
+  - name: authentik
+    namespace: authentik
+    chart: authentik/authentik
+    version: 2026.5.3
+    values:
+      - values.yaml
+    secrets:
+      - secrets.yaml
+      - ../../secrets/authentik-postgres.yaml

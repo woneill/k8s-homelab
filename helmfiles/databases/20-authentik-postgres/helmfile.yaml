@@ -1,0 +1,12 @@
+commonLabels:
+  sync-stage: databases
+
+releases:
+  - name: authentik-postgres
+    namespace: authentik
+    createNamespace: true
+    chart: .
+    values:
+      - values.yaml
+    secrets:
+      - ../../secrets/authentik-postgres.yaml

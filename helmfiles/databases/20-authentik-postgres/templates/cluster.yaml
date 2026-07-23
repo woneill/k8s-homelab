@@ -1,0 +1,27 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: {{ .Values.cluster.name }}
+spec:
+  instances: {{ .Values.cluster.instances }}
+
+  storage:
+    size: {{ .Values.cluster.storage.size }}
+    {{- if .Values.cluster.storage.storageClass }}
+    storageClass: {{ .Values.cluster.storage.storageClass }}
+    {{- end }}
+
+  bootstrap:
+    initdb:
+      database: {{ .Values.database.name }}
+      owner: {{ .Values.database.owner }}
+      secret:
+        name: {{ .Values.role.secretName }}
+
+  managed:
+    roles:
+      - name: {{ .Values.role.name }}
+        ensure: present
+        login: true
+        passwordSecret:
+          name: {{ .Values.role.secretName }}

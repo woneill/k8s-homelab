@@ -1,0 +1,7 @@
+authentik:
+  postgresql:
+    host: authentik-postgres-rw.authentik.svc.cluster.local
+    name: authentik
+    port: 5432
+    # user/password are managed in ../../secrets/authentik-postgres.yaml
+    # and reused by databases/20-authentik-postgres for CNPG role secret creation.

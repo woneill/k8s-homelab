@@ -1,0 +1,18 @@
+cluster:
+  name: authentik-postgres
+  instances: 3
+  storage:
+    size: 8Gi
+    storageClass: ""
+
+role:
+  name: authentik
+  secretName: authentik-db-user
+  # Create CNPG role secret from shared repo-managed credentials in:
+  # ../../secrets/authentik-postgres.yaml -> authentik.postgresql.{user,password}
+  createSecret: true
+
+database:
+  name: authentik
+  owner: authentik
+  ensure: present
