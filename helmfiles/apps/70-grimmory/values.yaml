@@ -92,3 +92,18 @@ extraObjects:
       host: "%"
       privileges:
         - ALL PRIVILEGES
+
+persistence:
+  # dataVolume:
+  #   size: 100Mi
+  booksVolume:
+    size: 30Gi
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "128k"
+    nginx.ingress.kubernetes.io/proxy-buffers: "4 256k"
+    nginx.ingress.kubernetes.io/proxy-busy-buffers-size: "256k"
+    nginx.ingress.kubernetes.io/large-client-header-buffers: "8 32k"
