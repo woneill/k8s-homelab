@@ -3,8 +3,8 @@ locals {
 }
 
 resource "authentik_user" "grimmory_keeper" {
-  username = "woneill"
-  email    = "woneill@woneill.com"
+  username = yamldecode(data.sops_file.secrets.raw).keeper_username
+  email    = yamldecode(data.sops_file.secrets.raw).grimmory_email
 }
 
 resource "authentik_group" "grimmory" {

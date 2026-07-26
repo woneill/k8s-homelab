@@ -62,8 +62,9 @@ resource "authentik_property_mapping_source_oauth" "keeper_username" {
 
   expression = <<EOT
 email = str(info.get("email", "")).lower().strip()
-if email in {"atlwoneill@gmail.com", "woneill@github.com"}:
-    return {"username": "woneill"}
+allowed_emails = yamldecode(data.sops_file.secrets.raw).allowed_emails
+if email in allowed_emails:
+    return {"username": yamldecode(data.sops_file.secrets.raw).keeper_username}
 
 return {}
 EOT
@@ -92,9 +93,10 @@ resource "authentik_policy_expression" "google_username_mapping" {
   expression = <<EOT
 prompt_data = request.context.get("prompt_data", {})
 email = str(prompt_data.get("email", "")).lower().strip()
+allowed_emails = yamldecode(data.sops_file.secrets.raw).allowed_emails
 
-if email in {"atlwoneill@gmail.com", "woneill@github.com"}:
-    prompt_data["username"] = "woneill"
+if email in allowed_emails:
+    prompt_data["username"] = yamldecode(data.sops_file.secrets.raw).keeper_username
 elif email:
     prompt_data["username"] = email
 
