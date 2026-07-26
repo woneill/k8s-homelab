@@ -1,4 +1,0 @@
----
-apiVersion: v2
-name: frigate-tailscale
-version: 0.0.0
