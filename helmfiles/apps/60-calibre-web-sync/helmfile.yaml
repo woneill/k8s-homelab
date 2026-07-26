@@ -1,9 +1,0 @@
-commonLabels:
-  sync-stage: apps
-
-releases:
-  - name: calibre-web-sync
-    namespace: calibre-web
-    chart: .
-    secrets:
-      - secrets.yaml
