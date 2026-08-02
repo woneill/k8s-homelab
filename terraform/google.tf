@@ -61,10 +61,13 @@ resource "authentik_property_mapping_source_oauth" "keeper_username" {
   name = "oauth-source-keeper-username"
 
   expression = <<EOT
+import json
 email = str(info.get("email", "")).lower().strip()
-allowed_emails = yamldecode(data.sops_file.secrets.raw).allowed_emails
-if email in allowed_emails:
-    return {"username": yamldecode(data.sops_file.secrets.raw).keeper_username}
+MAPPINGS = json.loads('${jsonencode(yamldecode(data.sops_file.secrets.raw).user_mappings)}')
+
+for entry in MAPPINGS:
+    if entry["email"] == email:
+        return {"username": entry["username"]}
 
 return {}
 EOT
@@ -91,14 +94,18 @@ resource "authentik_policy_expression" "google_username_mapping" {
   name = "google-username-mapping"
 
   expression = <<EOT
+import json
 prompt_data = request.context.get("prompt_data", {})
 email = str(prompt_data.get("email", "")).lower().strip()
-allowed_emails = yamldecode(data.sops_file.secrets.raw).allowed_emails
+MAPPINGS = json.loads('${jsonencode(yamldecode(data.sops_file.secrets.raw).user_mappings)}')
 
-if email in allowed_emails:
-    prompt_data["username"] = yamldecode(data.sops_file.secrets.raw).keeper_username
-elif email:
-    prompt_data["username"] = email
+for entry in MAPPINGS:
+    if entry["email"] == email:
+        prompt_data["username"] = entry["username"]
+        break
+else:
+    if email:
+        prompt_data["username"] = email
 
 request.context["prompt_data"] = prompt_data
 return False

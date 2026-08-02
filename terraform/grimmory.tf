@@ -1,21 +1,37 @@
 locals {
   grimmory_base_url = trimsuffix(data.sops_file.secrets.data["grimmory_base_url"], "/")
+  user_mappings     = yamldecode(data.sops_file.secrets.raw).user_mappings
 }
 
-resource "authentik_user" "grimmory_keeper" {
-  username = yamldecode(data.sops_file.secrets.raw).keeper_username
-  email    = yamldecode(data.sops_file.secrets.raw).grimmory_email
+locals {
+  # user_mappings is now a list of {email, username, groups}.
+  # Build a username-keyed map for creating authentik users.
+  users_by_name = {
+    for entry in nonsensitive(local.user_mappings) : entry.username => {
+      email  = entry.email
+      groups = entry.groups
+    }
+  }
 }
 
-resource "authentik_group" "grimmory" {
-  name  = "grimmory-users"
-  users = [tonumber(authentik_user.grimmory_keeper.id)]
+resource "authentik_user" "allowed_users" {
+  for_each = local.users_by_name
+
+  username = each.key
+  email    = each.value.email
 }
 
-resource "authentik_group" "admins" {
-  name         = "authentik-admins"
-  is_superuser = true
-  users        = [tonumber(authentik_user.grimmory_keeper.id)]
+resource "authentik_group" "groups" {
+  for_each = { for name in nonsensitive(distinct(flatten([
+    for v in local.user_mappings : v.groups
+  ]))) : name => name }
+
+  name         = each.value
+  is_superuser = each.key == "authentik-admins"
+  users = [
+    for user in authentik_user.allowed_users : tonumber(user.id)
+    if contains(local.users_by_name[user.username].groups, each.key)
+  ]
 }
 
 data "authentik_flow" "default_provider_authorization_implicit_consent" {
@@ -96,13 +112,19 @@ resource "authentik_provider_oauth2" "grimmory" {
 resource "authentik_application" "grimmory" {
   name               = "Grimmory"
   slug               = "grimmory"
-  group              = authentik_group.grimmory.id
+  group              = authentik_group.groups["grimmory-users"].id
   policy_engine_mode = "all"
   protocol_provider  = authentik_provider_oauth2.grimmory.id
 }
 
 resource "authentik_policy_binding" "grimmory_group_access" {
   target = authentik_application.grimmory.uuid
-  group  = authentik_group.grimmory.id
+  group  = authentik_group.groups["grimmory-users"].id
   order  = 0
+}
+
+resource "authentik_policy_binding" "grimmory_email_allowlist" {
+  target = authentik_application.grimmory.uuid
+  policy = authentik_policy_expression.email_allowlist.id
+  order  = 10
 }

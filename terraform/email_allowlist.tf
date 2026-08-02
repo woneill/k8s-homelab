@@ -3,8 +3,8 @@ resource "authentik_policy_expression" "email_allowlist" {
 
   expression = <<EOT
 ALLOWED_EMAILS = {
-%{for email in try(yamldecode(data.sops_file.secrets.raw).allowed_emails, [])~}
-    "${email}",
+%{for entry in try(yamldecode(data.sops_file.secrets.raw).user_mappings, [])~}
+    "${entry.email}",
 %{endfor~}
 }
 
