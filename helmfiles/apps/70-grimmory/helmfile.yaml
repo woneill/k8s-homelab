@@ -4,7 +4,7 @@ releases:
   - name: grimmory
     namespace: grimmory
     chart: oci://ghcr.io/grimmory-tools/helm-charts/grimmory
-    version: 3.3.1
+    version: 3.3.2
     hooks:
       - events: ["presync"]
         command: kubectl
