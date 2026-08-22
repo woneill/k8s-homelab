@@ -21,6 +21,8 @@ releases:
         metadata:
           name: grimmory
         spec:
+          strategy:
+            type: Recreate
           template:
             spec:
               initContainers:
