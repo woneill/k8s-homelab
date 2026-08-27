@@ -82,9 +82,9 @@ worker:
     machine:
       kubelet:
         extraMounts:
-          - destination: /var/lib/longhorn
+          - destination: /var/mnt/longhorn
             type: bind
-            source: /var/lib/longhorn
+            source: /var/mnt/longhorn
             options:
               - bind
               - rshared
@@ -96,6 +96,21 @@ worker:
         kernel.kexec_load_disabled: "1"
         # See https://longhorn.io/docs/1.8.0/advanced-resources/os-distro-specific/talos-linux-support/#v2-data-engine
         vm.nr_hugepages: "1024"
+  - |-
+    apiVersion: v1alpha1
+    kind: VolumeConfig
+    name: EPHEMERAL
+    provisioning:
+      maxSize: 80GB
+  - |-
+    apiVersion: v1alpha1
+    kind: UserVolumeConfig
+    name: longhorn
+    provisioning:
+      diskSelector:
+        match: disk.transport != "mmc"
+      grow: false
+      maxSize: 170GB
   - |-
     apiVersion: v1alpha1
     kind: WatchdogTimerConfig

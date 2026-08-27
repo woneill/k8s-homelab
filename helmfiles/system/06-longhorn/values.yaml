@@ -2,3 +2,5 @@ persistence:
   defaultDataLocality: "best-effort"
 defaultSettings:
   concurrentAutomaticEngineUpgradePerNodeLimit: "1"
+  defaultDataPath: /var/mnt/longhorn
+  replicaAutoBalance: true
