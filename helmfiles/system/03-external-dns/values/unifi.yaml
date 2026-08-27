@@ -1,4 +1,11 @@
-# fullnameOverride: external-dns-unifi
+fullnameOverride: external-dns-unifi
+initContainers:
+- name: wait-for-webhook
+  image: docker.io/alpine:3.19
+  command: ["sleep", "5"]
+  securityContext:
+    runAsUser: 65532
+    runAsNonRoot: true
 txtOwnerId: external-dns-unifi
 provider:
   name: webhook
