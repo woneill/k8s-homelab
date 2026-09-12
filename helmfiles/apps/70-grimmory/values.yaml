@@ -93,6 +93,12 @@ extraObjects:
       privileges:
         - ALL PRIVILEGES
 
+extraEnv:
+  - name: OIDC_ALLOW_UNSAFE_HOSTS
+    value: "true"
+  - name: SPRING_JPA_OPEN_IN_VIEW
+    value: "true"
+
 persistence:
   # dataVolume:
   #   size: 100Mi

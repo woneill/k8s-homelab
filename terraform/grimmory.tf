@@ -5,11 +5,15 @@ locals {
 
 locals {
   # user_mappings is now a list of {email, username, groups}.
-  # Build a username-keyed map for creating authentik users.
+  # Multiple emails may map to the same username (e.g. Google + GitHub).
+  # Build a username-keyed map, keeping the first email and all groups.
+  all_mappings     = nonsensitive(local.user_mappings)
+  unique_usernames = distinct([for entry in local.all_mappings : entry.username])
+
   users_by_name = {
-    for entry in nonsensitive(local.user_mappings) : entry.username => {
-      email  = entry.email
-      groups = entry.groups
+    for username in local.unique_usernames : username => {
+      email  = [for entry in local.all_mappings : entry.email if entry.username == username][0]
+      groups = [for entry in local.all_mappings : entry.groups if entry.username == username][0]
     }
   }
 }
