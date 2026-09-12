@@ -9,13 +9,13 @@ releases:
 - name: external-dns-cloudflare
   namespace: external-dns
   chart: external-dns/external-dns
-  version: 1.21.1
+  version: 1.22.0
   secrets:
   - secrets/cloudflare.yaml
 - name: external-dns-unifi
   namespace: external-dns
   chart: external-dns/external-dns
-  version: 1.21.1
+  version: 1.22.0
   secrets:
   - secrets/unifi.yaml
   values:
