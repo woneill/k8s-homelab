@@ -1,0 +1,13 @@
+---
+remote: origin
+target-branch: main
+chart-dirs:
+  - helmfiles/apps/30-syncthing
+# Test the local chart on every PR, including image-only Renovate updates.
+charts:
+  - helmfiles/apps/30-syncthing/chart
+check-version-increment: false
+validate-maintainers: false
+helm-extra-args: --timeout 600s
+additional-commands:
+  - helm unittest -f tests/*_test.yaml {{ .Path }}

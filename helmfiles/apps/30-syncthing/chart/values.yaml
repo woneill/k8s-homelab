@@ -1,0 +1,81 @@
+replicaCount: 1
+
+image:
+  repository: syncthing/syncthing
+  tag: "2.1.6"
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+# Recreate prevents two pods from competing for the existing RWO volume.
+updateStrategy:
+  type: Recreate
+
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+podSecurityContext: {}
+securityContext: {}
+
+containerPorts:
+  http: 8384
+  tcpSync: 22000
+  quicSync: 22000
+  discovery: 21027
+
+service:
+  type: LoadBalancer
+  port:
+    http: 80
+    tcpSync: 22000
+    quicSync: 22000
+    discovery: 21027
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: {}
+  hosts:
+    - host: syncthing.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+resources: {}
+
+livenessProbe:
+  httpGet:
+    path: /rest/noauth/health
+    port: http
+readinessProbe:
+  httpGet:
+    path: /rest/noauth/health
+    port: http
+  initialDelaySeconds: 10
+
+persistence:
+  enabled: true
+  mountPath: "/var/syncthing"
+  subPath: ""
+  storageClass: ""
+  annotations: {}
+  accessModes:
+    - ReadWriteOnce
+  size: 8Gi
+  existingClaim: ""
+  selector: {}
+  dataSource: {}
+
+volumes: []
+volumeMounts: []
+nodeSelector: {}
+tolerations: []
+affinity: {}
