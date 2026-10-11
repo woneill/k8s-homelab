@@ -1,0 +1,11 @@
+---
+# Used by ct install in a disposable kind cluster, never by Helmfile.
+service:
+  type: ClusterIP
+
+ingress:
+  enabled: false
+
+persistence:
+  storageClass: standard
+  size: 1Gi
