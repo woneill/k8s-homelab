@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: syncthing/syncthing
-  tag: "2.1.7-rc.2@sha256:814948198a668d1a897370d55492eed2be882e90d8702ccfbd91b532cbc93a29"
+  tag: "2.1.7-rc.3@sha256:fac4f53ecbcd3ecc7711b434e42b0fe42b8de170106510d45ddb1fb3e9f1b4c3"
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
