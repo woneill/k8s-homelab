@@ -30,20 +30,28 @@ controlPlane:
         - siderolabs/util-linux-tools
   patches:
   - |-
-    cluster:
-      apiServer:
-        admissionControl:
-          - name: PodSecurity
-            configuration:
-              exemptions:
-                namespaces:
-                  - cert-manager
-                  - frigate
-                  - grafana-cloud
-                  - intel-gpu-resource-driver
-                  - longhorn-system
-                  - metallb-system
-                  - tailscale
+    apiVersion: v1alpha1
+    kind: KubeAdmissionControlConfig
+    name: PodSecurity
+    configuration:
+      apiVersion: pod-security.admission.config.k8s.io/v1alpha1
+      kind: PodSecurityConfiguration
+      defaults:
+        audit: restricted
+        audit-version: latest
+        enforce: baseline
+        enforce-version: latest
+        warn: restricted
+        warn-version: latest
+      exemptions:
+        namespaces:
+          - cert-manager
+          - frigate
+          - grafana-cloud
+          - intel-gpu-resource-driver
+          - longhorn-system
+          - metallb-system
+          - tailscale
   - |-
     machine:
       sysctls:
@@ -52,16 +60,20 @@ controlPlane:
         # # See https://longhorn.io/docs/1.8.0/advanced-resources/os-distro-specific/talos-linux-support/#v2-data-engine
         # vm.nr_hugepages: "1024"
   - |-
-    cluster:
-      apiServer:
-        extraArgs:
-          feature-gates: "DRAExtendedResource=true,DynamicResourceAllocation=true"
-      controllerManager:
-        extraArgs:
-          feature-gates: "DRAExtendedResource=true,DynamicResourceAllocation=true"
-      scheduler:
-        extraArgs:
-          feature-gates: "DRAExtendedResource=true,DynamicResourceAllocation=true"
+    apiVersion: v1alpha1
+    kind: KubeAPIServerConfig
+    extraArgs:
+      feature-gates: "DRAExtendedResource=true,DynamicResourceAllocation=true"
+  - |-
+    apiVersion: v1alpha1
+    kind: KubeControllerManagerConfig
+    extraArgs:
+      feature-gates: "DRAExtendedResource=true,DynamicResourceAllocation=true"
+  - |-
+    apiVersion: v1alpha1
+    kind: KubeSchedulerConfig
+    extraArgs:
+      feature-gates: "DRAExtendedResource=true,DynamicResourceAllocation=true"
 worker:
   schematic:
     customization:
