@@ -1,3 +1,8 @@
+server:
+  ingress:
+    annotations:
+      external-dns-unifi.kubernetes.io/enabled: "false"
+
 authentik:
   postgresql:
     host: authentik-postgres-rw.authentik.svc.cluster.local
