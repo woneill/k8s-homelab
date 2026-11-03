@@ -30,3 +30,4 @@ policy: sync
 annotationFilter: external-dns-unifi.kubernetes.io/enabled notin (false)
 sources:
 - ingress
+- service

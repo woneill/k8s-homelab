@@ -1,5 +1,20 @@
+api:
+  dashboard: true
+  insecure: false
 ingressClass:
   isDefaultClass: false
+service:
+  spec:
+    # Preserve client IPs for the dashboard allowlist.
+    externalTrafficPolicy: Local
+ingressRoute:
+  dashboard:
+    middlewares:
+      - name: dashboard-lan-only
+      - name: dashboard-basic-auth
+    tls:
+      secretName: traefik-dashboard-tls
+
 providers:
   kubernetesGateway:
     enabled: true
