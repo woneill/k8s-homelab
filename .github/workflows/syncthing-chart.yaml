@@ -3,7 +3,10 @@ name: Syncthing Chart
 
 on:
   pull_request:
-  merge_group:
+    paths:
+      - 'helmfiles/apps/30-syncthing/**'
+      - '.github/ct.yaml'
+      - '.github/workflows/syncthing-chart.yaml'
   workflow_dispatch:
 
 permissions:

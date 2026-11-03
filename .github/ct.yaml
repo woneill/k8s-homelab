@@ -3,7 +3,8 @@ remote: origin
 target-branch: main
 chart-dirs:
   - helmfiles/apps/30-syncthing
-# Test the local chart on every PR, including image-only Renovate updates.
+# Explicitly test the chart when the workflow detects relevant changes,
+# including image-only Renovate updates.
 charts:
   - helmfiles/apps/30-syncthing/chart
 check-version-increment: false
