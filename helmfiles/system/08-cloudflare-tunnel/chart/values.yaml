@@ -1,0 +1,24 @@
+# Supply these through SOPS-encrypted values, never plaintext production values.
+credentials:
+  accountTag: ""
+  tunnelSecret: ""
+
+cloudflared:
+  replica:
+    allNodes: false
+    count: 2
+
+  tunnelConfig:
+    # Use the existing tunnel UUID, not its display name. This is also the
+    # TunnelID written into credentials.json by the wrapper.
+    name: ""
+
+  tunnelSecrets:
+    # Both references intentionally point at the wrapper-managed JSON-only
+    # Secret. The upstream chart projects it twice but does not require cert.pem.
+    existingPemFileSecret:
+      name: cloudflare-tunnel-credentials
+      key: cert.pem
+    existingConfigJsonFileSecret:
+      name: cloudflare-tunnel-credentials
+      key: credentials.json

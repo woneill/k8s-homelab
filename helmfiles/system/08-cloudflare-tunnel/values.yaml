@@ -1,2 +1,43 @@
-image:
-  tag: 2026.6.1
+cloudflared:
+  replica:
+    allNodes: false
+    count: 2
+
+  serviceAccount:
+    automount: false
+
+  # Preserve the old chart's scheduling policy rather than tolerating all taints.
+  tolerations: []
+  affinity:
+    podAntiAffinity:
+      preferredDuringSchedulingIgnoredDuringExecution:
+        - weight: 10
+          podAffinityTerm:
+            topologyKey: kubernetes.io/hostname
+            labelSelector:
+              matchLabels:
+                app.kubernetes.io/name: cloudflared
+                app.kubernetes.io/instance: cloudflare-tunnel
+
+  podSecurityContext:
+    runAsNonRoot: true
+    runAsUser: 65532
+    runAsGroup: 65532
+
+  livenessProbe:
+    httpGet:
+      path: /ready
+      port: 2000
+    failureThreshold: 6
+    initialDelaySeconds: 30
+    periodSeconds: 10
+    timeoutSeconds: 2
+
+  readinessProbe:
+    httpGet:
+      path: /ready
+      port: 2000
+    failureThreshold: 3
+    initialDelaySeconds: 10
+    periodSeconds: 10
+    timeoutSeconds: 2

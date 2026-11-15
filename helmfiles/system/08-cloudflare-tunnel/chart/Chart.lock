@@ -1,0 +1,6 @@
+dependencies:
+- name: cloudflared
+  repository: https://community-charts.github.io/helm-charts
+  version: 2.2.19
+digest: sha256:af9e3366ae77b7f38809b574333ee5aba539c5d2f7fb4bb1075e1436feec51a6
+generated: "2026-11-02T22:18:20.951557-05:00"

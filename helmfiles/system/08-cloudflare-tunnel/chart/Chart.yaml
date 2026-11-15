@@ -1,0 +1,9 @@
+apiVersion: v2
+name: cloudflare-tunnel
+description: Credentials-only wrapper for the community cloudflared chart
+type: application
+version: 0.1.0
+dependencies:
+  - name: cloudflared
+    version: 2.2.19
+    repository: https://community-charts.github.io/helm-charts

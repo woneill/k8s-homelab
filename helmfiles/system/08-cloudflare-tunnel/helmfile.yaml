@@ -1,13 +1,18 @@
 commonLabels:
   sync-stage: system
+helmDefaults:
+  atomic: true
+  cleanupOnFail: true
+  wait: true
+  waitForJobs: true
+  timeout: 300
 repositories:
-- name: cloudflare
-  url: https://cloudflare.github.io/helm-charts
+- name: community-charts
+  url: https://community-charts.github.io/helm-charts
 releases:
 - name: cloudflare-tunnel
   namespace: cloudflare
-  chart: cloudflare/cloudflare-tunnel
-  version: 0.3.2
+  chart: ./chart
   secrets:
   - secrets.yaml
   values:
