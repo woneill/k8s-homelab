@@ -7,7 +7,7 @@ releases:
 - name: traefik
   namespace: traefik
   chart: traefik/traefik
-  version: 42.4.3
+  version: 43.0.0
   values:
   - values.yaml
   secrets:
